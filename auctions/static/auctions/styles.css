@@ -1,0 +1,119 @@
+body {
+    padding: 10px;
+}
+strong{
+    color: rgb(131, 243, 131);
+}
+
+
+
+.cont{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    height: 250px;
+    width: 95%;
+    overflow: hidden;
+    border: 2px solid rgb(201, 198, 196);
+    border-radius: 10px;
+    box-shadow: 0px 4px lavender;
+
+    
+}
+.cont_image{
+    height: 100%;
+    width: 30%;
+    text-align: center;
+    overflow: hidden;
+}
+a{
+    cursor: pointer;
+}
+.info{
+    padding-top: 20px;
+    padding-left: 20px;
+    height: 100%;
+    width: 50%;
+}
+.list{
+    display: grid;
+    grid-auto-rows:minmax(400px,auto);
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 20px;
+    justify-items: center;
+    align-items: center;
+    
+}
+.s-list{
+    width: 30%;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+ 
+.cont_info{
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+    grid-column: 2/4;
+    border: 2px solid lavender;
+}
+.img{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: 2px solid lavender;
+}
+.comment{
+    width: 100%;
+    height: 100%;
+    grid-column: 1/4;
+    border: 2px solid lavender;
+    padding: 10px;
+
+}
+
+.S{
+    display: grid;
+    grid-auto-rows:minmax(400px,200px);
+    
+    border:2px solid rgb(201, 198, 196);
+}
+
+.text{
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 4px;
+    border-radius: 10px;
+}
+
+
+.bt{
+    background-color: blue;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    padding: 4px;
+    
+}
+.bt:hover{
+    color: white;
+}
+.box{
+    border: 2px solid rgba(105, 103, 102, 0.759);
+    border-radius: 10px;
+
+
+}
+
+.box p{
+    padding: 10px;
+    border-radius: 4px;
+    border-collapse: collapse;
+
+
+
+}
+.box p span{
+    font-size: larger;
+    font-weight: bolder;
+}

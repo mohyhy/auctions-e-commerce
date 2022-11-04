@@ -1,0 +1,33 @@
+{% extends "auctions/layout.html" %}
+{% block body %}
+
+    {%for i in a%}
+    <div class="s-list">
+        
+            <li class="list-group-item">
+                <a href="{% url 'cate'%}?cate={{i.name}}">{{i.name}}</a>
+            </li>
+    </div>
+    {%endfor%}
+    {%for i in product %}
+    <a href="{% url 'pro' i.id %}" style="color: black;   text-decoration: none;">
+        <div class="cont">
+            <div class="cont_image">
+                    <img src="{{i.image.url}}" height="250px">
+                    
+            </div>
+            <div class="info">
+                <h4>{{i.id}}</h4>
+                <h4>{{i.title}}</h4>
+                <h4>Price: ${{i.price}}</h4>
+                <p>{{i.date}}</p>
+    
+            </div>
+            
+    
+        </div>
+        </a>
+    {% endfor %}
+
+
+{% endblock %}  

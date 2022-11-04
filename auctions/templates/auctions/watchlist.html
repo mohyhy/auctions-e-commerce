@@ -1,0 +1,27 @@
+{% extends "auctions/layout.html" %}
+{% block body %}
+
+  <ol>
+   {%for i in all%}
+    
+    <li>
+        <div class="cont">
+        <div class="cont_image">
+                <img src="{{i.listing.image.url}}" height="250px">
+        </div>
+        <div class="info">
+            <h4>{{i.listing.id}}</h4>
+            <h4>{{i.listing.title}}</h4>
+            <h4>Price: ${{i.listing.price}}</h4>
+            <p>{{i.listing.date}}</p>
+            
+
+        </div>
+        
+
+        </div>
+    </li>
+    {%endfor%}
+  </ol>
+
+{% endblock %}

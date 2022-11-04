@@ -1,0 +1,105 @@
+{% extends "auctions/layout.html" %}
+{% load crispy_forms_tags%}
+
+
+{% block body %}
+    <div class="list">
+        <div class="img">
+            
+                <img src="{{pro.image.url}}" height="400px">
+              
+        </div>
+
+        <div class="cont_info">
+            <div class="title">
+                <h3>{{pro.title}}</h3>
+                <p>{{pro.des}}</p>
+
+            </div>
+            <hr>
+            <div class="price">
+                <h5>current bid : <strong>${{pro.price}}</strong></h4>
+
+            </div>
+            <hr>
+         
+        {%if pro.active is True%}
+            <div>
+                <form method="post" action="{% url 'pro' pro.id %}">
+                    {%csrf_token%}
+                    {{form|crispy}}
+                    <input type="submit" value="palce Bid" class="bt">
+                </form>
+            </div>
+            {% if message%}
+               <div>
+                  <p class="alert alert-danger" style="margin-top: 4px; border-radius: 10px;">Amount entered must be higher than the current bid amount</p>
+
+               </div>
+            {%endif%}
+            <div>
+                <form method="post" action="{% url 'watchlist'%}">
+                    {%csrf_token%}
+                    <input type="hidden" value="{{pro.id}}" name="id">
+                    <input type="submit" value="add cart" class="bt" style="margin-top: 4px; padding: 4px;">
+                </form>    
+                
+            </div>
+            <div>
+                {%if pro.User.username == user.username%}
+                <form method="post" action="{% url 'close' %}">
+                    {%csrf_token%}
+                    <input type="hidden" value="{{pro.price}}" name="id3">
+                    <input type="hidden" value="{{pro.id}}" name="id2">
+                    <input type="submit" value="close Bid" class="bt" style="margin-top: 4px; padding: 4px; background-color: red;">
+                </form>
+                {%endif%}                  
+            </div>
+        {%elif win %}
+             <h3>You win The Bid</h3>    
+        {%else%}    
+            <h3>This Bid is close</h3>
+        {%endif%} 
+            
+            
+        </div>
+        
+        
+         
+    
+        <div class="comment">
+            <form class=".form-control" method="post" action="{% url 'com' %}">
+                {%csrf_token%}
+
+                <div class="form-group">
+                
+                <label for="id_title" class=" requiredField">
+                        Comment:</label>
+                <input type="text" name="comment" placeholder="Comment..." class="textinput textInput form-control" id="id_title">
+                <input type="hidden" name="ID" value="{{pro.id}}">
+                <input type="submit" value="Add Comment" class="bt">
+                </div>
+            </form>
+
+            
+            
+            {%for i in comment%}
+               <div class="box">
+                  <p>by <span>{{i.User.username}}</span></p>
+                  <hr>
+                  <p>{{i.des}}</p>
+                
+                 
+                
+               </div>
+            {%endfor%}
+        </div>
+      
+        
+    </div>
+    
+
+
+
+   
+{% endblock %}
